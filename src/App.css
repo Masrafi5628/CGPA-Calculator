@@ -1,8 +1,15 @@
 .App {
   text-align: center;
-  margin-top: 30px;
+  margin: 10px 10px 10px 10px;
+  background-color: #e7f0e7;
+  padding: 0px 20px 20px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
-
+#page-header{
+  background-color: rgb(175, 197, 197);
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -23,7 +30,7 @@
 .semester-input input {
   margin-right: 10px;
   padding: 8px;
-  font-size: 16px;
+  font-size: 13px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
@@ -44,6 +51,28 @@
 }
 
 .cgpa {
-  margin-top: 20px;
+  position: sticky;
+  top: 20px;
+  right: 80px;
   font-size: 20px;
+  float: right;
+  background-color: #333c4f;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 1;
 }
+.cgpa-number{
+  color: #03ec16;
+}
+h1 {
+  margin-bottom: 20px;
+}
+.delete{
+  background-color: red;
+}
+
+.delete:hover{
+  background-color: rgb(138, 104, 104);
+}
+

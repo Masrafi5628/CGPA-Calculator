@@ -1,23 +1,31 @@
-import React, { useState } from 'react';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [semesters, setSemesters] = useState([{ gpa: '', credits: '' }]);
+  const [semesters, setSemesters] = useState([{ id: 1, gpa: "", credits: "" }]);
 
-  const handleGPAChange = (index, value) => {
-    const newSemesters = [...semesters];
-    newSemesters[index].gpa = value;
+  const handleGPAChange = (id, value) => {
+    const newSemesters = semesters.map((semester) =>
+      semester.id === id ? { ...semester, gpa: value } : semester
+    );
     setSemesters(newSemesters);
   };
 
-  const handleCreditsChange = (index, value) => {
-    const newSemesters = [...semesters];
-    newSemesters[index].credits = value;
+  const handleCreditsChange = (id, value) => {
+    const newSemesters = semesters.map((semester) =>
+      semester.id === id ? { ...semester, credits: value } : semester
+    );
     setSemesters(newSemesters);
   };
 
   const addSemester = () => {
-    setSemesters([...semesters, { gpa: '', credits: '' }]);
+    const newId = semesters.length + 1;
+    setSemesters([...semesters, { id: newId, gpa: "", credits: "" }]);
+  };
+
+  const deleteSemester = (id) => {
+    const newSemesters = semesters.filter((semester) => semester.id !== id);
+    setSemesters(newSemesters);
   };
 
   const calculateCGPA = () => {
@@ -39,28 +47,42 @@ function App() {
 
   return (
     <div className="App">
-      <h1>CGPA Calculator</h1>
+      <h1 id="page-header">CGPA Calculator</h1>
+      <div className="cgpa">
+        <h2>
+          CGPA:{" "}
+          <span className="cgpa-number">{calculateCGPA().toFixed(2)}</span>
+        </h2>
+      </div>
       <div className="container">
         {semesters.map((semester, index) => (
-          <div key={index} className="semester-input">
+          <div key={semester.id} className="semester-input">
             <input
               type="number"
               placeholder={`Semester ${index + 1} GPA`}
               value={semester.gpa}
-              onChange={(e) => handleGPAChange(index, e.target.value)}
+              onChange={(e) => handleGPAChange(semester.id, e.target.value)}
             />
             <input
               type="number"
               placeholder={`Semester ${index + 1} Credits`}
               value={semester.credits}
-              onChange={(e) => handleCreditsChange(index, e.target.value)}
+              onChange={(e) => handleCreditsChange(semester.id, e.target.value)}
             />
+            <button
+              className="delete"
+              onClick={() => deleteSemester(semester.id)}
+            >
+              &times;
+            </button>
           </div>
         ))}
+        <button className="add-semester-btn" onClick={addSemester}>
+          Add Semester
+        </button>
       </div>
-      <button className="add-semester-btn" onClick={addSemester}>Add Semester</button>
-      <div className="cgpa">
-        <h2>CGPA: {calculateCGPA().toFixed(2)}</h2>
+      <div style={{ textAlign: 'center'}}>
+ 
       </div>
     </div>
   );
