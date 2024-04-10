@@ -48,7 +48,7 @@ function App() {
   return (
     <div className="App">
       <h1 id="page-header">CGPA Calculator</h1>
-      <div className="cgpa">
+      <div className="cgpa cgpa-bar">
         <h2>
           CGPA:{" "}
           <span className="cgpa-number">{calculateCGPA().toFixed(2)}</span>
@@ -69,12 +69,14 @@ function App() {
               value={semester.credits}
               onChange={(e) => handleCreditsChange(semester.id, e.target.value)}
             />
+            <div>
             <button
               className="delete"
               onClick={() => deleteSemester(semester.id)}
             >
               &times;
             </button>
+          </div>
           </div>
         ))}
         <button className="add-semester-btn" onClick={addSemester}>

@@ -1,24 +1,33 @@
 html {
   transform: scale(1.6);
   transform-origin: top left;
-  width: 62.5%; 
+  width: 62.5%;
   height: 62.5%;
   overflow: auto;
 }
 
+@media (max-width: 768px) {
+  html {
+    transform: none;
+    width: auto;
+    height: auto;
+  }
+}
 
 .App {
   text-align: center;
-  margin: 10px 10px 10px 10px;
+  margin: 10px;
   background-color: #e7f0e7;
-  padding: 0px 20px 20px 20px;
+  padding: 0px 10px 20px 10px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: relative;
 }
-#page-header{
+
+#page-header {
   background-color: rgb(175, 197, 197);
 }
+
 .container {
   display: flex;
   flex-direction: column;
@@ -71,17 +80,41 @@ html {
   border-radius: 5px;
   z-index: 1;
 }
-.cgpa-number{
+
+
+@media (max-width: 1150px) {
+.cgpa{
+  right: 0px;
+  top: 0px;
+  padding: 0.009px;
+  position: relative;
+  float: none;
+  align-items: center;
+}
+.container{
+  position: relative;
+  margin: 30px 5px 5px 5px;
+}
+
+.semester-input input{
+  margin: 0px 0px 15px 4px;
+}
+}
+
+
+
+.cgpa-number {
   color: #03ec16;
 }
+
 h1 {
   margin-bottom: 20px;
 }
-.delete{
+
+.delete {
   background-color: red;
 }
 
-.delete:hover{
+.delete:hover {
   background-color: rgb(138, 104, 104);
 }
-
